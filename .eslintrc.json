@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "standard",
+    "plugin:prettier/recommended",
+    "prettier/flowtype",
+    "prettier/standard"
+  ],
+  "plugins": [
+      "flowtype",
+      "prettier"
+  ],
+  "parser": "babel-eslint",
+  "rules": {
+    "no-unused-vars": ["error", { "args": "all" }],
+    "flowtype/sort-keys": [
+      "error",
+      "asc"
+    ],
+    "flowtype/semi": [
+      "error",
+      "never"
+    ],
+    "prettier/prettier": "error"
+  }
+}
