@@ -1,0 +1,87 @@
+version: 2
+jobs:
+  unit_tests:
+    working_directory: ~/redux-action-analytics-middleware
+    docker:
+      - image: circleci/node:10.13.0
+    steps:
+      - checkout
+
+      # Cache javascript dependencies
+      - type: cache-restore
+        name: Restore node_modules cache
+        keys:
+          - redux-action-analytics-middleware-yarn-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - redux-action-analytics-middleware-yarn-
+
+      - run: yarn install
+
+      - type: cache-save
+        name: Store node_modules cache
+        paths:
+          - node_modules
+        key: redux-action-analytics-middleware-yarn-{{ checksum "yarn.lock" }}
+
+      # Run specs
+      - run: yarn test
+
+  flow:
+    working_directory: ~/redux-action-analytics-middleware
+    docker:
+      - image: circleci/node:10.13.0
+    steps:
+      - checkout
+
+      # Cache javascript dependencies
+      - type: cache-restore
+        name: Restore node_modules cache
+        keys:
+          - redux-action-analytics-middleware-yarn-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - redux-action-analytics-middleware-yarn-
+
+      - run: yarn install
+
+      - type: cache-save
+        name: Store node_modules cache
+        paths:
+          - node_modules
+        key: redux-action-analytics-middleware-yarn-{{ checksum "yarn.lock" }}
+
+      # Run flow
+      - run: yarn flow
+
+  eslint:
+    working_directory: ~/redux-action-analytics-middleware
+    docker:
+      - image: circleci/node:10.13.0
+    steps:
+      - checkout
+
+      # Cache javascript dependencies
+      - type: cache-restore
+        name: Restore node_modules cache
+        keys:
+          - redux-action-analytics-middleware-yarn-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - redux-action-analytics-middleware-yarn-
+
+      - run: yarn install
+
+      - type: cache-save
+        name: Store node_modules cache
+        paths:
+          - node_modules
+        key: redux-action-analytics-middleware-yarn-{{ checksum "yarn.lock" }}
+
+      # Run eslint
+      - run: yarn eslint
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - flow
+      - eslint
+      - unit_tests
