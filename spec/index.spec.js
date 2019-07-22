@@ -4,6 +4,10 @@ import configureMockStore from 'redux-mock-store'
 
 import AnalyticsMiddleware from '../src'
 
+type State = {|
+  someValue: true
+|}
+
 declare var jest
 
 const { describe, it, expect } = global
@@ -14,6 +18,7 @@ const { describe, it, expect } = global
 describe('AnalyticsMiddleware', (): void => {
   describe('when the action is to be tracked', (): void => {
     it('calls the trackCallback argument', (): void => {
+      const dummyState = { someValue: true }
       const untrackableAction = {
         type: 'UNTRACKABLE_ACTION'
       }
@@ -28,11 +33,15 @@ describe('AnalyticsMiddleware', (): void => {
         })
       ]
       const mockStore = configureMockStore(middlewares)
-      const store = mockStore()
+      const store = mockStore(dummyState)
 
       store.dispatch(untrackableAction)
       store.dispatch(trackableAction)
-      return expect(trackCallback).toHaveBeenCalled()
+      expect(trackCallback).toBeCalledWith(
+        trackableAction,
+        dummyState,
+        dummyState
+      )
     })
   })
 
@@ -43,7 +52,7 @@ describe('AnalyticsMiddleware', (): void => {
       }
       const trackCallback = jest.fn()
       const middlewares = [
-        AnalyticsMiddleware({
+        AnalyticsMiddleware<State>({
           trackCallback,
           trackableActions: []
         })
