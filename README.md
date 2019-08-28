@@ -2,7 +2,7 @@
 
 _A middleware to trigger analytics for white-listed actions_
 
-[![npm](https://img.shields.io/npm/dt/reverse-number.svg)](https://www.npmjs.com/package/redux-action-analytics-middleware)
+[![npm](https://img.shields.io/npm/dt/redux-action-analytics-middleware.svg)](https://www.npmjs.com/package/redux-action-analytics-middleware)
 
 ## Description
 
