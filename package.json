@@ -13,18 +13,18 @@
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-flow": "^7.0.0",
     "babel-eslint": "^10.0.2",
-    "eslint": "^6.0.1",
+    "eslint": "^7.7.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-flowtype": "^4.7.0",
     "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
-    "flow-bin": "^0.102.0",
+    "flow-bin": "^0.131.0",
     "flow-copy-source": "^2.0.7",
-    "jest": "^24.8.0",
+    "jest": "^26.4.2",
     "prettier": "^1.18.2",
     "redux": "^4.0.4",
     "redux-mock-store": "^1.5.3"
@@ -64,5 +64,5 @@
     "prepack:flow": "flow-copy-source src lib",
     "test": "jest"
   },
-  "version": "2.3.0"
+  "version": "2.4.0"
 }
