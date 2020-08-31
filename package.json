@@ -64,5 +64,5 @@
     "prepack:flow": "flow-copy-source src lib",
     "test": "jest"
   },
-  "version": "2.2.0"
+  "version": "2.3.0"
 }
